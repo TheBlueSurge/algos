@@ -13,6 +13,7 @@ using namespace std;
 \returns location of key if found or -1 if not found
 */
 int linearSearch(auto data, auto key);//prototype
+int binarySearch(auto data, auto key);
 
 
 int main()
@@ -72,6 +73,25 @@ int linearSearch(auto data, auto key){
 	for(int i = 0; i < data.size();i++){
 			if(data[i] == key)
 				return i;
+	}
+		return -1;
+}
+
+int binarySearch(auto data, auto key){
+	int low = 0;
+	int high = data.size() - 1;
+	int mid = (high+low)/2;
+	
+	while (low <= high){
+		if(data[mid] == key)
+				return mid;
+				
+		if(key < data[mid])
+			high = mid-1;
+		else
+			low = mid+1;
+			
+			mid = (high+low)/2;
 	}
 		return -1;
 }

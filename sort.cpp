@@ -21,6 +21,25 @@ int linearSearch(auto data, auto key){
 		return -1;
 }
 
+int binarySearch(auto data, auto key){
+	int low = 0;
+	int high = data.size() - 1;
+	int mid = (high+low)/2;
+	
+	while (low <= high){
+		if(data[mid] == key)
+				return mid;
+				
+		if(key < data[mid])
+			high = mid-1;
+		else
+			low = mid+1;
+			
+			mid = (high+low)/2;
+	}
+		return -1;
+}
+
 void BubbleSort(auto data){
 	for(int i = 0; i < data.size(); i++){
 			for( int j = 0; j < data.size()-1; j++){
@@ -56,7 +75,7 @@ void InsertionSort(auto& data){
 int main()
 {
   vector<string> inputs;
-  string input;
+  string input, search_key, answer;
   int result;
 
    cout<<"Welcome to \"search it\". We first need some input data."<<endl;
@@ -87,9 +106,31 @@ int main()
 					{
 						cout<<inputs[i]<<" , ";
 					}
+	cout << "Would you like to perform a search?" << endl;
+	cin >> answer;
+		if(answer == "Yes" || answer == "yes"){
+			cout << "Please input what you'd like to search for" << endl;
+			cin >> search_key;
+			
+						 while(search_key != "#")//perform searches until sentinel entered
+				{
+					result = binarySearch(inputs, search_key);
+
+					cout<<"  '"<<search_key<<"' was ";
+
+					if (result == -1)
+					  cout<<"not found";
+					else
+					  cout<<"found at index "<<result;
 
 
-   cout<<endl<<"Program \"sort it\" is now finished."<<endl<<endl;
+					cout<<endl<<endl<<"Enter a value to search for: ";
+					cin>>search_key; 
+				}
+		}
+		
+		else
+		cout<<endl<<"Program \"sort it\" is now finished."<<endl<<endl;
 
     return 0;
 }
