@@ -40,7 +40,7 @@ int binarySearch(auto data, auto key){
 		return -1;
 }
 
-void BubbleSort(auto data){
+void BubbleSort(auto& data){
 	for(int i = 0; i < data.size(); i++){
 			for( int j = 0; j < data.size()-1; j++){
 				if (data[j] > data[j+1])
@@ -100,7 +100,7 @@ int main()
  
    cout<<endl<<"To end input type the #-character (followed by Enter)"<<endl<<endl;
 	cout << "This shall now be sorted" << endl;
-			InsertionSort(inputs);
+			BubbleSort(inputs);
 		
 				   for (int i = 0; i < inputs.size(); i++)
 					{
